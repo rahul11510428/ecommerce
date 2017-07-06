@@ -54,11 +54,6 @@
  </div> <!-- end of panel -->
 
 </div>  <!-- end of container class -->
-
-   
- 
- 
- 
   
 </body>
 </html>

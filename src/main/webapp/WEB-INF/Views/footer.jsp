@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="styles.css">
+ 
  
  
  
@@ -38,7 +38,7 @@
        <div class="col-sm-2">
          <h6> Navigation</h6>
          <ul class="unstyled">
-           <li><a href="#">Home  </a></li>
+           <li><a href="index">Home  </a></li>
            <li><a href="#">Servies </a></li>
            <li><a href="#">Links </a></li>
            <li><a href="#">Contact us </a></li>          

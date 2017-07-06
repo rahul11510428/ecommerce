@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+ 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,10 +7,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="styles.css">
+ 
  
 
-<title>Insert title here</title>
+<title>navbar.jsp</title>
 
 </head>
 <body>
@@ -19,13 +18,13 @@
 <div class="navbar navbar-dark" style="background-color:  #6666ff; height:2px;">
   <div class="container-fluid">
         
-      <a class="navbar-brand" href="#"> <img src="resources/logo.png" alt="alter" style="width:100px; length:100px; margin-top:-10px; margin-right:-20px ;margin-left:-10px" > </a>
+      <a class="navbar-brand" href="index"> <img src="resources/logo.png" alt="alter" style="width:100px; length:100px; margin-top:-10px; margin-right:-20px ;margin-left:-10px" > </a>
       
  	   
  
    
     <ul class="nav navbar-nav">    
-      <li ><a href="http://localhost:8080/ecommerce/index.jsp"><span style="color:white">HOME</span></a></li>
+      <li ><a href="index"><span style="color:white">HOME</span></a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span style="color:white">INDOOR SPORTS</span><span style="color:white" class="caret"></span></a>
        
         <ul class="dropdown-menu">

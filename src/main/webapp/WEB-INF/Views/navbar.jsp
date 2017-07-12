@@ -1,3 +1,5 @@
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -14,17 +16,19 @@
 
 </head>
 <body>
-
-<div class="navbar navbar-dark" style="background-color:  #6666ff; height:2px;">
-  <div class="container-fluid">
-        
-      <a class="navbar-brand" href="index"> <img src="resources/logo.png" alt="alter" style="width:100px; length:100px; margin-top:-10px; margin-right:-20px ;margin-left:-10px" > </a>
-      
- 	   
  
+
+ 
+
+<div class="navbar navbar-dark" style="background-color:  #6666ff; height:50px;">
+  <div class="container-fluid">
+      <c:url value="resources/logo.png" var="logoUrl" ></c:url> 
+      <a class="navbar-brand" href="index"> <img src="${logoUrl}" alt="alter" style="width:100px; length:100px; margin-top:-10px; margin-right:-20px ;margin-left:-10px" > </a>
+    
    
-    <ul class="nav navbar-nav">    
-      <li ><a href="index"><span style="color:white">HOME</span></a></li>
+    <ul class="nav navbar-nav">  
+      <c:url value="index" var="homeUrl"></c:url>  
+      <li ><a href="${homeUrl}"><span style="color:white">HOME</span></a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span style="color:white">INDOOR SPORTS</span><span style="color:white" class="caret"></span></a>
        
         <ul class="dropdown-menu">
@@ -94,10 +98,12 @@
            <span class="glyphicon glyphicon-search" ></span> 
           </button> 
       </form>  
-       
+       <a href="getproductform"><span class="btn btn-danger" style="padding:3px; margin-top:12px">Add Products</span></a>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="registration"><span style="color:white" class="glyphicon glyphicon-user"></span> <span style="color:white">Sign Up </span></a></li>
             <li><a href="login"><span style="color:white" class="glyphicon glyphicon-log-in"></span> <span style="color:white"  >Login</span></a></li>
+            <br>
+            
         </ul>
      </div>
   </div>

@@ -1,12 +1,13 @@
 package com.niit.controller;
 
-import  org.springframework.stereotype.*;
+
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
   @Controller 	
   public class HomeController {
 
-@RequestMapping("/")
+  @RequestMapping("/")
   public String home()
   {
  	 return "index";
@@ -24,22 +25,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 	 return "registration";
    }
   
-  @RequestMapping("/navbar")
-  public String navbarPage()
-  {
-	return "navbar";  
-  }
-
   
   @RequestMapping("/login")
   public String loginPage()
   {
 	  return "login";
   }
+  
  
-	
- 
-
 
 
 }

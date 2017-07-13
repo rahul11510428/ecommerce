@@ -9,12 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.niit.configuration.DBConfiguration;
+import com.niit.dao.ProductDaoImpl;
+import com.niit.model.Category;
 import com.niit.model.Product;
 import com.niit.service.ProductService;
 import com.niit.service.ProductServiceImpl;
-import com.nitt.dao.ProductDaoImpl;
 
 @Controller
 public class ProductController {
@@ -28,7 +28,9 @@ public class ProductController {
 	
 	@RequestMapping("/getproductform")
 	public String getProductForm(Model model)
-	{
+	{   
+		List<Category> categories =productService.getAllCategories();
+		model.addAttribute("categories",categories);
 		model.addAttribute("product",new Product()); // Product product =new Product();
 		return "productform";
 	}
@@ -37,18 +39,20 @@ public class ProductController {
 	public String saveProduct(@ModelAttribute(name="product") Product product)
 	{
 		productService.saveProduct(product);
-		return "success";
+		return "redirect:/getallproducts";
 	}
 	
-	@RequestMapping("getallproducts")
+	@RequestMapping("/getallproducts")
 	public String getAllProducts(Model model)
 	{
 		List<Product> products =productService.getAllProducts();
+		List<Category> categories =productService.getAllCategories();
+		model.addAttribute("categories",categories);
 		model.addAttribute("products",products); // 1st Parameter is Key and 2nd Parameter is value;
 		return "productlist";
 	}
 	
-	@RequestMapping("viewproduct/{id}")
+	@RequestMapping("/viewproduct/{id}")
 	public String getProductById(@PathVariable int id,Model model)
 	{
 		Product product = productService.getProductById(id);
@@ -57,10 +61,33 @@ public class ProductController {
 		
 	}
 	
-	@RequestMapping("deleteproduct/{id}")
+	@RequestMapping("/deleteproduct/{id}")
 	public String deleteProduct(@PathVariable int id)
 	{
 		productService.deleteProduct(id);
 		return "redirect:/getallproducts";
 	}
+	
+	@RequestMapping("/geteditform/{id}")
+	public String getEditForm(@PathVariable int id,Model model)
+	{
+		Product product =productService.getProductById(id);
+		List<Category> categories =productService.getAllCategories();
+		model.addAttribute("categories",categories);
+		model.addAttribute("productObj",product);
+		return "editform";
+	}
+	
+	@RequestMapping("/editproduct")
+	public String editproduct(@ModelAttribute(name="productObj") Product product)
+	{
+		
+	  productService.editProduct(product);
+	  return "redirect:/getallproducts"; //redirecting to handler get all products to retrieve left products 
+	  
+	}
+	
+	
+	
+	
 }

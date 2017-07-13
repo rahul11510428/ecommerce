@@ -81,15 +81,7 @@
          </li>
        
        
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span style="color:white">CLOTHING</span><span style="color:white" class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Track-Suits</a></li>
-          <li><a href="#">T-Shirts</a></li>
-          <li><a href="#">Lowers</a></li>
-          <li><a href="#">Shorts</a></li>
-          <li><a href="#">Swimming Costume</a></li>
-         </ul>
-      </li>
+       
      
     </ul>
      <form class="navbar-form pull-left">
@@ -99,9 +91,12 @@
           </button> 
       </form>  
        <a href="getproductform"><span class="btn btn-danger" style="padding:3px; margin-top:12px">Add Products</span></a>
+       <a href="getallproducts"><span class="btn btn-danger" style="padding:3px; margin-top:12px">Browse Products</span></a>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="registration"><span style="color:white" class="glyphicon glyphicon-user"></span> <span style="color:white">Sign Up </span></a></li>
-            <li><a href="login"><span style="color:white" class="glyphicon glyphicon-log-in"></span> <span style="color:white"  >Login</span></a></li>
+            <c:url value="registration" var="registrationUrl"/>
+            <c:url value="login" var="loginUrl"/>
+            <li><a href="${registrationUrl}"><span style="color:white" class="glyphicon glyphicon-user"></span> <span style="color:white">Sign Up </span></a></li>
+            <li><a href="${loginUrl}"><span style="color:white" class="glyphicon glyphicon-log-in"></span> <span style="color:white"  >Login</span></a></li>
             <br>
             
         </ul>

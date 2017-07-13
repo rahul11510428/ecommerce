@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
+<%@ include file="navbar.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,7 +19,7 @@
 </div> <!-- end of panel heading -->
 
 <div class="panel-body" style="padding-top:40px">
-<table>
+<table class="table table-hover">
 
  <tr>
   <td>Product Name :</td><td>${product.productname}</td>  
@@ -27,14 +28,17 @@
  <tr>
   <td>Price :</td> <td>${product.price}</td>
  </tr> <!-- end of second row -->
- <br>
- <tr>
-  <td>Description</td> <td>${product.description} </td>
- </tr> <!-- End of third row -->
  
+  
  <tr>
    <td> Quantity :</td> <td>${product.quantity}</td>
+ </tr>  <!-- End of third row -->
+ 
+ 
+ <tr>
+  <td>Description :</td> <td>${product.description} </td>
  </tr> <!-- end of  fourth row -->
+ 
 </table>
   <br>
   <c:url value="/getallproducts" var="url1"></c:url>

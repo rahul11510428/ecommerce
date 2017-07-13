@@ -14,27 +14,29 @@
 
   <div class="container">
    <b><h2>List of Products</h2></b><br><br>
-    <table class="table table-striped">
+    <table class="table table-hover">
       <thead>
-       <tr><th>Product Name</th><th>Price</th><th>Quantity</th><th>Description</th></tr>
+       <tr><th>Product Name</th><th>Category</th><th>Price</th><th>Quantity</th><th>Action</th></tr>
       </thead>
       <tbody>
         <c:forEach items="${products}" var="p">
         <c:url value="/viewproduct/${p.id}" var="viewUrl" ></c:url>
         <c:url value="/deleteproduct/${p.id}" var="deleteUrl"></c:url>
+        <c:url value="/geteditform/${p.id}" var="editUrl"></c:url>
          <tr>
           <td><a href="${viewUrl}">${p.productname}</a></td> 
+          <td>${p.category.categoryname}</td>
           <td>${p.price}</td><td>${p.quantity}</td>
-          <td>${p.description}</td>
           <td>
-            <a href="${viewUrl}"><span class="glyphicon glyphicon-info-sign"></span> </a>
-            <a href="${deleteUrl}"><span class="glyphicon glyphicon-trash" ></span> </a>
+            <a href="${viewUrl}"><span class="glyphicon glyphicon-info-sign"></span> </a>   
+            <a href="${deleteUrl}"><span class="glyphicon glyphicon-trash" ></span> </a>    
+             <a href="${editUrl}"><span class="glyphicon glyphicon-pencil" ></span> </a>
           </td>
          </tr>
         </c:forEach>
       </tbody>
     </table>
-  </div>
+  </div> <!-- End container -->
   
 </body>
 </html>

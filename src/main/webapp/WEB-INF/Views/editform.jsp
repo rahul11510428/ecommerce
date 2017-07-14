@@ -26,26 +26,28 @@
          <form:form action="${url1}" method="post"  modelAttribute="productObj">
          
              <form:hidden path="id"/>
-            
-             
+                              
              <label>Product Name :</label> 
              <br>
-             <form:input path="productname" style="width:80%" /><br>
-             
+             <form:input path="productname" style="width:94%" /><br>
+             <form:errors path="productname" cssStyle="color:red" ></form:errors>
              <label> Price :</label>
              <br> 
-             <form:input path="price" style="width:80%" /><br>
+             <form:input path="price" style="width:94%" /><br>
+             <form:errors path="price" cssStyle="color:red"></form:errors>
                                
-             <label>Description :</label>
+             <label>Quantity :</label>
              <br>
-             <form:input path="description" style="width:80%"/><br>
-                  
-            <label>Quantity :</label>  
+             <form:input path="quantity" style="width:94%" /><br>
+             <form:errors path="quantity" cssStyle="color:red"></form:errors> 
+            
+            <label>Description :</label>  
             <br>
-            <form:input path="quantity" style="width:80%" /><br>
-             
+             <form:input path="description" style="width:94%"/><br>
+             <form:errors path="description" cssStyle="color:red" ></form:errors>    
             <br>
-            <input type="submit" class="btn btn-danger"  value="Edit Product"/> 
+            <input type="submit" class="btn btn-success"  value="Edit Product"/> 
+            
             <c:forEach items="${categories}" var="c">
             <form:radiobutton path="category.id" value="${c.id}"/>
             ${c.categoryname}   

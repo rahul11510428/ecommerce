@@ -26,8 +26,8 @@
       <li data-target="#myCarousel" data-slide-to="3"></li>
     </ol>
 
-     
-    <div class="carousel-inner" style="margin-top:1px;" >
+      
+    <div class="carousel-inner" >
 
       <div class="item active">
         <img src="resources/bolt.jpg" alt="bolt" style="width:100%; length:300%">  
@@ -67,5 +67,6 @@
   
 </body>
 </html>
+ <br><br><br>
 <jsp:include page="/WEB-INF/Views/footer.jsp"></jsp:include>
 

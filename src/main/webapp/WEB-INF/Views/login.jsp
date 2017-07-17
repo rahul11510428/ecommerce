@@ -49,6 +49,7 @@
                     </div>  <!-- end of panel -->
         </div> <!--  end of container -->
         
+         <br><br> <br> 
            <footer style="background-color:#bfbfbf">
   <div class="container" style="margin-top:85px;">
     <div class="row">

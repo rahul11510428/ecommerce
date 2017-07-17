@@ -15,12 +15,11 @@
 <title>navbar.jsp</title>
 
 </head>
+
 <body>
  
 
- 
-
-<div class="navbar navbar-dark" style="background-color:  #6666ff; height:50px;">
+<div class="navbar  navbar-fixed-top" style="background-color:  #6666ff; height:50px;">
   <div class="container-fluid">
       <c:url value="resources/logo.png" var="logoUrl" ></c:url> 
       <a class="navbar-brand" href="index"> <img src="${logoUrl}" alt="alter" style="width:100px; length:100px; margin-top:-10px; margin-right:-20px ;margin-left:-10px" > </a>
@@ -100,7 +99,7 @@
             <br>
             
         </ul>
-     </div>
-  </div>
+     </div> <!-- End container-fluid -->
+  </div> <!-- End navbar -->
 </body>
 </html>

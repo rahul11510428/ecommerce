@@ -24,6 +24,11 @@
 <table class="table table-hover">
 
  <tr>
+ <c:url value="/resources/images/${product.id}"  var="imageUrl"> </c:url>
+  <td><img src="${imageUrl}"> </td>
+ </tr>
+ 
+ <tr>
   <td>Product Name :</td><td>${product.productname}</td>  
  </tr> <!-- End of first row -->
  

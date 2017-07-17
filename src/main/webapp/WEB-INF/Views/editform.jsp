@@ -46,6 +46,10 @@
              <form:input path="description" style="width:94%"/><br>
              <form:errors path="description" cssStyle="color:red" ></form:errors>    
             <br>
+            <div class="form-group">
+             Upload an image
+             <input type="file"  value="image">
+            </div>
             <input type="submit" class="btn btn-success"  value="Edit Product"/> 
             
             <c:forEach items="${categories}" var="c">

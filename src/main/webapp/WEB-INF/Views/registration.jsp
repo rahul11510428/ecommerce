@@ -13,6 +13,8 @@
    <jsp:include page="navbar.jsp"/>  
  
  
+ <br><br> <br><br> <br><br>
+ 
 <div class="container" style="width:35%">
  <div class="panel panel-success">
    <div class="panel-heading">

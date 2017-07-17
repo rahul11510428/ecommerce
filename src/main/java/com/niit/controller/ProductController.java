@@ -1,6 +1,10 @@
 package com.niit.controller;
 
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.context.ApplicationContext;
@@ -11,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import com.niit.configuration.DBConfiguration;
 import com.niit.dao.ProductDaoImpl;
 import com.niit.model.Category;
@@ -31,7 +36,7 @@ public class ProductController {
 	@RequestMapping("/getproductform")
 	public String getProductForm(Model model)
 	{   
-		List<Category> categories =productService.getAllCategories();
+		List<Category> categories = productService.getAllCategories();
 		model.addAttribute("categories",categories);
 		model.addAttribute("product",new Product()); // Product product =new Product();
 		return "productform";
@@ -46,7 +51,24 @@ public class ProductController {
 			 return "productform";
 		}
 		productService.saveProduct(product);
-		return "redirect:/getallproducts";
+		
+		MultipartFile image = product.getImage(); 
+		
+		Path path = Paths.get("C:\\Users\\My Pc\\workspace\\ecommerce\\src\\main\\webapp\\WEB-INF\\resources\\images\\"+product.getId()+ ".png");
+		
+		try 
+		{
+			
+			image.transferTo(new File(path.toString()));
+			
+		} catch (IllegalStateException e) {
+			
+			e.printStackTrace();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		return "redirect:/getallproducts" ;
 	}
 	
 	@RequestMapping("/getallproducts")
@@ -94,7 +116,26 @@ public class ProductController {
 		  model.addAttribute("categories",categories);
 		  return "editform";
 	  }
+	  
 	  productService.updateProduct(product);
+	  
+		MultipartFile image = product.getImage(); 
+		
+		Path path = Paths.get("C:\\Users\\My Pc\\workspace\\ecommerce\\src\\main\\webapp\\WEB-INF\\resources\\images\\"+product.getId()+ ".png");
+		
+		try 
+		{
+			
+			image.transferTo(new File(path.toString()));
+			
+		} catch (IllegalStateException e) {
+			
+			e.printStackTrace();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+	  
 	  return "redirect:/getallproducts"; //redirecting to handler get all products to retrieve left products 
 	  
 	}

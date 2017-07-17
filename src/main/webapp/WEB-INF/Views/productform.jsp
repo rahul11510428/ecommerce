@@ -19,7 +19,7 @@
 
 <div class="container" style="width:30%; margin-top:100px">
    <!-- http://localhost:8080/ecommerce/saveproduct -->
-  <form:form action="saveproduct" method="post"  modelAttribute="product" >
+  <form:form action="saveproduct" method="post"  modelAttribute="product" enctype="multipart/form-data">
     <form:hidden path="id"/>
     <h4>Enter Product Name </h4>
     <form:input class="form-control" path="productname"/> 
@@ -37,6 +37,12 @@
     <form:textarea class="form-control" path="description"/> 
     <form:errors path="description" cssStyle="color:red" ></form:errors>
     <br>
+     
+     <div class="form-group">
+      Upload an image
+      <input type="file"  value="image">
+     </div>
+        
     <input type="submit" class="btn btn-success" value="ADD PRODUCT"/>
     <br>
      <br>

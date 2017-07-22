@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
- 
+<%@ include file="navbar.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,12 +9,12 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Insert title here</title>
+<title>Insert  here</title>
 </head>
 <body>
-<jsp:include page="navbar.jsp"></jsp:include>
 
-<div class="container" style="width:35%; margin-top:80px">
+
+<div class="container" style="width:55%; margin-top:80px">
 <div class="panel panel-info">
 <div class="panel-heading">
 <b><h2>Details About the Product</h2></b>
@@ -24,8 +24,8 @@
 <table class="table table-hover">
 
  <tr>
- <c:url value="/resources/images/${product.id}"  var="imageUrl"> </c:url>
-  <td><img src="${imageUrl}"> </td>
+ <c:url value="/resources/images/${product.id}.png"  var="imageUrl"> </c:url>
+  <td><img src="${imageUrl}"  style="width:400px;height:200px"> </td>
  </tr>
  
  <tr>

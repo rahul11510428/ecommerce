@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+<%@ include file="navbar.jsp" %>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -10,7 +11,7 @@
 <title>Login</title>
 </head>
 <body>
-<jsp:include page="navbar.jsp"/>
+ 
 
 
  <div  class="container" style="margin-top:100px; width:30%; "  >                    

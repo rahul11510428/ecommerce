@@ -3,10 +3,13 @@ package com.niit.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+
 import javax.validation.Valid;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
+
 import com.niit.configuration.DBConfiguration;
 import com.niit.dao.ProductDaoImpl;
 import com.niit.model.Category;
@@ -28,11 +32,10 @@ public class ProductController {
 	
      
 	 ApplicationContext context=new AnnotationConfigApplicationContext(DBConfiguration.class,ProductServiceImpl.class,ProductDaoImpl.class);
-	 
+
    	 ProductService productService = (ProductService)context.getBean("productServiceImpl");
            
-           
-	
+           	
 	@RequestMapping("/getproductform")
 	public String getProductForm(Model model)
 	{   
@@ -53,21 +56,20 @@ public class ProductController {
 		productService.saveProduct(product);
 		
 		MultipartFile image = product.getImage(); 
+		Path path = Paths.get("C:\\Users\\My Pc\\workspace\\ecommerce\\src\\main\\webapp\\WEB-INF\\resources\\images\\" + product.getId() + ".png");
 		
-		Path path = Paths.get("C:\\Users\\My Pc\\workspace\\ecommerce\\src\\main\\webapp\\WEB-INF\\resources\\images\\"+product.getId()+ ".png");
-		
-		try 
-		{
-			
-			image.transferTo(new File(path.toString()));
-			
-		} catch (IllegalStateException e) {
-			
-			e.printStackTrace();
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}
+					
+		try{
+                File file = new File(path.toString());				
+				image.transferTo(file);
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}		
+	
 		return "redirect:/getallproducts" ;
 	}
 	
@@ -94,6 +96,19 @@ public class ProductController {
 	public String deleteProduct(@PathVariable int id)
 	{
 		productService.deleteProduct(id);
+		
+		Path path =Paths.get("C:\\Users\\My Pc\\workspace\\ecommerce\\src\\main\\webapp\\WEB-INF\\resources\\images\\" + id + ".png");
+		
+		if(Files.exists(path))
+		{
+			try {
+				Files.delete(path);
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
+			
+		}
 		return "redirect:/getallproducts";
 	}
 	
@@ -117,28 +132,29 @@ public class ProductController {
 		  return "editform";
 	  }
 	  
-	  productService.updateProduct(product);
+	    productService.updateProduct(product); 
 	  
 		MultipartFile image = product.getImage(); 
+		Path path = Paths.get("C:\\Users\\My Pc\\workspace\\ecommerce\\src\\main\\webapp\\WEB-INF\\resources\\images\\" + product.getId() + ".png");
 		
-		Path path = Paths.get("C:\\Users\\My Pc\\workspace\\ecommerce\\src\\main\\webapp\\WEB-INF\\resources\\images\\"+product.getId()+ ".png");
-		
-		try 
-		{
-			
-			image.transferTo(new File(path.toString()));
-			
-		} catch (IllegalStateException e) {
-			
-			e.printStackTrace();
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}
+					
+		try{
+              File file = new File(path.toString());
+            
+				image.transferTo(file);
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}		
 	  
+		 	  
 	  return "redirect:/getallproducts"; //redirecting to handler get all products to retrieve left products 
 	  
-	}
+	  }
+	
 	
 	
 	

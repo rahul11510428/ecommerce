@@ -23,7 +23,7 @@
      <div class="panel-body" style="padding-top:50px;">
         
          <c:url value="/editproduct" var="url1"/>
-         <form:form action="${url1}" method="post"  modelAttribute="productObj">
+         <form:form action="${url1}" method="post"  modelAttribute="productObj" enctype="multipart/form-data">
          
              <form:hidden path="id"/>
                               
@@ -31,16 +31,18 @@
              <br>
              <form:input path="productname" style="width:94%" /><br>
              <form:errors path="productname" cssStyle="color:red" ></form:errors>
+             <br>
              <label> Price :</label>
              <br> 
              <form:input path="price" style="width:94%" /><br>
              <form:errors path="price" cssStyle="color:red"></form:errors>
+             <br>
                                
              <label>Quantity :</label>
              <br>
              <form:input path="quantity" style="width:94%" /><br>
              <form:errors path="quantity" cssStyle="color:red"></form:errors> 
-            
+               <br>
             <label>Description :</label>  
             <br>
              <form:input path="description" style="width:94%"/><br>
@@ -48,7 +50,7 @@
             <br>
             <div class="form-group">
              Upload an image
-             <input type="file"  value="image">
+             <input type="file"  name="image">
             </div>
             <input type="submit" class="btn btn-success"  value="Edit Product"/> 
             

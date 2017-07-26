@@ -27,7 +27,7 @@
 <body>
  
  
-  <div class="container">
+  <div class="container-fluid">
   
    <b><h2>List of Products</h2></b><br><br>
    
@@ -49,12 +49,12 @@
         <c:url value="/geteditform${p.id}" var="editUrl"></c:url>
         
          <tr>
-          <td> <img src="${imageUrl}" style="width:150px; height:150px"> </td>
+          <td> <img src="${imageUrl}" style="width:250px; height:200px"> </td>
           <td><a href="${viewUrl}"> <h3 style="padding-top:40px">  ${p.productname} </h3></a></td> 
           
           <td><h3 style="padding-top:40px" >  ${p.category.categoryname}</h3></td>
           
-          <td> <h3 style="padding-top:40px">${p.price} </h3> </td>
+          <td> <h3 style="padding-top:40px">  <i class="fa fa-inr" style="font-size:22px;color:red"></i> <span style="color:red" > ${p.price}</span>   </h3> </td>
           
           <td> <h3 style="padding-top:40px"> ${p.quantity}</h3> </td>
           
@@ -68,7 +68,7 @@
         </c:forEach>
       </tbody>
     </table>
-  </div> <!-- End container -->
+  </div> <!-- End container-fluid -->
   
 </body>
 </html>

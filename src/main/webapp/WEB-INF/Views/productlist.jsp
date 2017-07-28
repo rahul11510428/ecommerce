@@ -2,7 +2,8 @@
     pageEncoding="ISO-8859-1"%>
  <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
-  
+ <%@ taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
 <title>Product List</title>
 <%@ include file="navbar.jsp" %>
  
@@ -21,6 +22,19 @@
 	});
 </script>
  
+<script type="text/javascript">
+  
+function confirmDelete(delUrl) {
+	 var x = confirm("Are you sure you want to delete this Item ?");
+	if (x) {
+	    document.location = delUrl;
+	    
+	  } 
+	}
+	
+	
+ 
+</script> 
 
 
 </head>
@@ -35,7 +49,7 @@
     
       <thead>
       
-       <tr><th>Image</th><th>Name</th><th>Category</th><th>Price</th><th>Qty</th> <th>View</th>  <th>Delete</th> <th>Edit</th></tr>
+       <tr><th>Image</th><th>Name</th><th>Category</th><th>Price</th><th>Qty</th> <th>Action</th> </tr>
        
       </thead>
       <tbody>
@@ -44,12 +58,12 @@
         
         <c:url value="/viewproduct${p.id}" var="viewUrl" ></c:url>
         
-        <c:url value="/deleteproduct/${p.id}" var="deleteUrl"></c:url>
+        <c:url value=" javascript:confirmDelete('deleteproduct/${p.id}')" var="deleteUrl"></c:url>
         
-        <c:url value="/geteditform${p.id}" var="editUrl"></c:url>
+        <c:url value="/admin_geteditform${p.id}" var="editUrl"></c:url>
         
          <tr>
-          <td> <img src="${imageUrl}" style="width:250px; height:200px"> </td>
+          <td> <a href="${viewUrl}"> <img src="${imageUrl}" style="width:250px; height:200px"> </a>  </td>
           <td><a href="${viewUrl}"> <h3 style="padding-top:40px">  ${p.productname} </h3></a></td> 
           
           <td><h3 style="padding-top:40px" >  ${p.category.categoryname}</h3></td>
@@ -58,12 +72,18 @@
           
           <td> <h3 style="padding-top:40px"> ${p.quantity}</h3> </td>
           
-          <td>  <a  href="${viewUrl}" class="btn btn-primary" style="margin-top:60px " ><span   class="glyphicon glyphicon-info-sign"></span> </a> </td>
-            
-          <td>  <a href="${deleteUrl}" class="btn btn-danger" style="margin-top:60px"><span  class="glyphicon glyphicon-trash" ></span>  </a>  </td> 
-          
-          <td>  <a href="${editUrl}" class="btn btn-success" style="margin-top:60px" ><span  class="glyphicon glyphicon-pencil" ></span></a>  </td> 
+          <td>
+           <a  href="${viewUrl}" class="btn btn-primary" style="margin-top:60px " ><span   class="glyphicon glyphicon-info-sign"></span></a>  
            
+           <security:authorize access="hasRole('ROLE_USER')">
+           <a href="#"  class="btn btn-default" style="background-color:#ff9f00;margin-top:60px"><span class="glyphicon glyphicon-shopping-cart" style="color:white" ></span></a>
+           </security:authorize>
+           <security:authorize access="hasRole('ROLE_ADMIN')">
+           <a href="${deleteUrl}"  class="btn btn-danger" style="margin-top:60px"><span  class="glyphicon glyphicon-trash" ></span>  </a>  
+                    
+           <a href="${editUrl}" class="btn btn-success" style="margin-top:60px" ><span  class="glyphicon glyphicon-pencil" ></span></a>   
+           </security:authorize>
+           </td>
          </tr>
         </c:forEach>
       </tbody>

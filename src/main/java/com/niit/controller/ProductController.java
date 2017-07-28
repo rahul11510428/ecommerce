@@ -29,11 +29,12 @@ public class ProductController {
 	
      
   
-    @Autowired
+	@Autowired
    	private ProductService productService ;
            
-           	
-	@RequestMapping("/getproductform")
+    
+     
+	@RequestMapping("/admin_getproductform")
 	public String getProductForm(Model model)
 	{   
 		List<Category> categories = productService.getAllCategories();
@@ -109,7 +110,7 @@ public class ProductController {
 		return "redirect:/getallproducts";
 	}
 	
-	@RequestMapping("/geteditform{id}")
+	@RequestMapping("/admin_geteditform{id}")
 	public String getEditForm(@PathVariable int id,Model model)
 	{
 		Product product =productService.getProductById(id);
@@ -160,21 +161,16 @@ public class ProductController {
 	}
 	
 	
+	
 	@RequestMapping("/searchproduct")
 	public String searchProduct(@RequestParam String SearchKeyword,Model model)
 	{
 		List <Product> products =productService.getAllProducts();
 		model.addAttribute("products",products);
-		if(SearchKeyword == null)
-		{
-			return "productform";
-		}
-		
-		else
-		{
-			model.addAttribute("searchCondition",SearchKeyword);		
-			return "productlist";
-		}
+		 
+		 model.addAttribute("searchCondition",SearchKeyword);		
+	     return "productlist";
+		 
 	}
 	
 	
